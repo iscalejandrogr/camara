@@ -21,8 +21,9 @@ $(function(){
 });   
 
 function tomarFoto(){
-alert("tomar foto");
+
 	navigator.device.capture.captureImage(function(img){
+	alert("tomar foto");
 		for(i=0;i<img.length;i++){
 			ruta = img[i].fullPath;
 		}
@@ -37,7 +38,7 @@ alert("tomar foto");
 <body>
 <div data-role="page" id="Registrar">
 	<div data-role="header" data-theme="b" data-position="fixed" data-add-back-btn="true" data-rel="back">
-	<h1>Obtener coordenadas</h1>
+	<h1>Obtener fotografia</h1>
 	</div>
     
 	<div data-role="content">
