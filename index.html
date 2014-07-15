@@ -1,62 +1,40 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css">
-<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/jquery.mobile-1.4.3.min.js"></script>
-
-    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-    // Función 'callback' satisfactoria
-    //
-    function captureSuccess(mediaFiles) {
-        var i, len;
-        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-            uploadFile(mediaFiles[i]);
-        }       
-    }
-
-    // Llamada si algún error ocurre.
-    // 
-    function captureError(error) {
-        var msg = 'Ocurrió un error mientras se capturaba: ' + error.code;
-        navigator.notification.alert(msg, null, 'Uh oh!');
-    }
-
-    // Un botón llamara esta función
-    //
-    function captureImage() {
-        // Lanza la aplicación de cámara, 
-        // y permite capturar hasta 2 imágenes
-        navigator.device.capture.captureImage(captureSuccess, captureError, {limit: 2});
-    }
-
-    // Sube los ficheros al servidor
-    function uploadFile(mediaFile) {
-        /*var ft = new FileTransfer(),
-            path = mediaFile.fullPath,
-            name = mediaFile.name;
-
-        ft.upload(path,
-            "http://my.domain.com/upload.php",
-            function(result) {
-                console.log('Subida correcta: ' + result.responseCode);
-                console.log(result.bytesSent + ' bytes enviados');
-            },
-            function(error) {
-                console.log('Error en la subida del fichero ' + path + ': ' + error.code);
-            },
-            { fileName: name });   */
-            alert("Hasta aqui fucniona");
-    }
-
+<meta charset="UTF-8">
+<title>CAptura de Medios</title>
+<script src="phonegap.js"></script>
+<script type="text/javascript">
+var capturador;
+document.addEventListeiner("deviceready",function (){
+  capturador=navigator.device.capture;
+}, false);
+function audio(){
+  capturador.captureAudio(capturoOk, capturoError);
+}
+function imagen(){
+alert("ejecucion correcta");
+  capturador.captureImage(capturoOk, capturoError);
+}
+function video(){
+  capturador.captureVideo(capturoOk, capturoError);
+}
+function capturoError(){
+alert("Error al capturar");
+}
+function capturoOk(archivos){
+  for (i=0;i<archivos.length);i++){
+  var ruta=archivos[i].fullPath;
+  var type=arhivos[i].type;
+  alert("ruta: "+ruta+" type:"+type);
+  }
+}
     </script>
     </head>
     <body>
-        <button onclick="captureImage();">Capturar imagen</button> <br>
+        <button onclick="imagen();">Capturar imagen</button> <br>
+         <button onclick="audio();">Capturar Audio</button> <br>
+         <button onclick="video();">Capturar Video</button> <br>
+         
     </body>
 </html>
