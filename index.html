@@ -21,10 +21,25 @@ $(function(){
 });   
 
 function tomarFoto(){
-
+alert("Tomar Foto");
 navigator.camera.getPicture(onSuccess, onFail, { quality: 50 }); 
+alert("Tomar Foto2");
+/*
+//Captura
+function tomarFoto(){
+	navigator.device.capture.captureImage(function(img){
+		for(i=0;i<img.length;i++){
+			ruta = img[i].fullPath;
+		}
+		$('#regFoto').attr('foto',ruta);
+		$('#regImg').html('<img src="'+ruta+'" width="100%" />');
+	},function(err){
+		alert("Error: "+err.code);
+	},{limit:2});
+}*/
 }
 function onSuccess(imageData) {
+alert("Tomar Foto3");
     var image = document.getElementById('miImagen');
     image.src = "data:image/jpeg;base64," + imageData;
 }
