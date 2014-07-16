@@ -11,18 +11,23 @@
 <script src="js/jquery.mobile-1.4.3.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function(){  
- document.addEventListener("deviceready", function(){  
+   var pictureSource;   // Origen de la imagen
+    var destinationType; // Formato del valor retornado
+
+    // Espera a que PhoneGap conecte con el dispositivo.
+    //
+    document.addEventListener("deviceready",function(){
     var botonfoto=$("#regFoto"); 
     botonfoto.tap(function(){  
-    tomarFoto();
+    onDeviceReady();
     }); 
         
   },false);
 });   
 
-function tomarFoto(){
+function onDeviceReady(){
 alert("Tomar Foto");
-navigator.camera.getPicture(onSuccess, onFail, { quality: 50 }); 
+ navigator.camera.getPicture(onSuccess, onFail, { quality: 50 });
 alert("Tomar Foto2");
 /*
 //Captura
