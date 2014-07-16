@@ -22,17 +22,17 @@ $(function(){
 
 function tomarFoto(){
 
-	navigator.device.capture.captureImage(function(img){
-	alert("tomar foto");
-		for(i=0;i<img.length;i++){
-			ruta = img[i].fullPath;
-		}
-		$('#regFoto').attr('foto',ruta);
-		$('#regImg').html('<img src="'+ruta+'" width="100%" />');
-	},function(err){
-		alert("Error: "+err.code);
-	},{limit:2});	
+navigator.camera.getPicture(onSuccess, onFail, { quality: 50 }); 
 }
+function onSuccess(imageData) {
+    var image = document.getElementById('miImagen');
+    image.src = "data:image/jpeg;base64," + imageData;
+}
+
+function onFail(message) {
+    alert('Ocurrió un error: ' + message);
+}
+
 </script>
 </head>
 <body>
@@ -43,7 +43,7 @@ function tomarFoto(){
     
 	<div data-role="content">
 		<a href="#" data-role="button" id="regFoto">Tomar Foto</a>
-		<div id="regImg" style="width: 100%;"></div>
+		<img id="miImagen" src="" />
 	</div>    
 	<div data-role="footer" data-position="fixed" data-theme="b" >
 	<h1>Derechos reservados</h1>
