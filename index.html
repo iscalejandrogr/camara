@@ -14,18 +14,20 @@ $(function(){
    var pictureSource;   // Origen de la imagen
     var destinationType; // Formato del valor retornado
 
-    // Espera a que PhoneGap conecte con el dispositivo.
-    //
-    document.addEventListener("deviceready",function(){
-    var botonfoto=$("#regFoto"); 
-    botonfoto.tap(function(){  
-    onDeviceReady();
-    }); 
+   document.addEventListener("deviceready",function(){
+  
+  pictureSource=navigator.camera.PictureSourceType;
+  destinationType=navigator.camera.DestinationType;
         
-  },false);
+   var botonfoto=$("#regFoto"); 
+    botonfoto.tap(function(){  
+    tomarFoto();
+   }
+   
+   },false);
 });   
 
-function onDeviceReady(){
+function tomarFoto(){
 alert("Tomar Foto");
  navigator.camera.getPicture(onSuccess, onFail, { quality: 50,destinationType: destinationType.DATA_URL });
 	
