@@ -27,11 +27,8 @@ $(function(){
 
 function onDeviceReady(){
 alert("Tomar Foto");
- navigator.camera.getPicture(onSuccess, onFail, { quality: 50 });
-alert("Tomar Foto2");
-/*
-//Captura
-function tomarFoto(){
+ //navigator.camera.getPicture(onSuccess, onFail, { quality: 50 });
+
 	navigator.device.capture.captureImage(function(img){
 		for(i=0;i<img.length;i++){
 			ruta = img[i].fullPath;
@@ -41,7 +38,7 @@ function tomarFoto(){
 	},function(err){
 		alert("Error: "+err.code);
 	},{limit:2});
-}*/
+	
 }
 function onSuccess(imageData) {
 alert("Tomar Foto3");
